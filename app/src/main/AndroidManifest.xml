@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.eshwanth.myapplication" >
+
+    <permission
+        android:name="com.example.eshwanth.myapplication.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="com.example.eshwanth.myapplication.permission.C2D_MESSAGE" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+
+    <application
+        android:allowBackup="true"
+        android:label="Time table"
+        android:theme="@style/AppTheme" >
+
+        <!-- ****************** GCM connection receivers ********************* -->
+
+
+
+        <receiver
+            android:name="com.google.android.gms.gcm.GcmReceiver"
+            android:exported="true"
+            android:permission="com.google.android.c2dm.permission.SEND" >
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+
+                <category android:name="com.example.eshwanth.myapplication" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name=".MyGcmListenerService"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+            </intent-filter>
+        </service>
+
+        <service
+            android:name="com.example.eshwanth.myapplication.MyInstanceIDListenerService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.android.gms.iid.InstanceID"/>
+            </intent-filter>
+        </service>
+
+        <service
+            android:name="com.example.eshwanth.myapplication.RegistrationIntentService"
+            android:exported="false">
+        </service>
+
+
+        <!-- ****************** GCM connection ends ********************* -->
+
+
+        <!-- ****************** Widget receiver ********************* -->
+
+        <receiver android:name=".app_widget" >
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/appwidget" />
+        </receiver>
+
+        <service
+            android:name=".WidgetService"
+            android:permission="android.permission.BIND_REMOTEVIEWS" />
+
+        <!-- ****************** widget receiver ends ********************* -->
+
+        <activity
+            android:name=".MainActivity"
+            android:label="Time table" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".Login"
+            android:label="Sign In" />
+
+        <activity
+            android:name=".Register"
+            android:label="Sign Up" />
+
+        <activity
+            android:name=".profMainActivity"
+            android:label="@string/title_activity_prof_main" />
+
+        <activity
+            android:name=".send_msg_prof"
+            android:label="@string/title_activity_send_msg_prof" />
+
+    </application>
+
+</manifest>

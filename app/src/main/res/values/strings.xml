@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">LoginRegister</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_login">Login</string>
+    <string name="title_activity_register">Register</string>
+    <string name="title_activity_prof_main">profMainActivity</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_send_msg_prof">send_msg_prof</string>
+    <string name="token_value">token_value</string>
+
+
+</resources>
